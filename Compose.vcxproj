@@ -51,6 +51,7 @@
     <ClCompile Include="src\ProcessCommands.cpp" />
     <ClCompile Include="src\ProcessCompose.cpp" />
     <ClCompile Include="src\Plugin.cpp" />
+    <ClCompile Include="src\ProcessNotifications.cpp" />
     <CopyFileToFolders Include="compose-default.jsonc">
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
       <FileType>Document</FileType>
@@ -59,6 +60,11 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
     </CopyFileToFolders>
     <None Include="src\Host\ScintillaCall.cxx" />
+    <CopyFileToFolders Include="userdefinitions-model.jsonc">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <FileType>Document</FileType>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </CopyFileToFolders>
     <None Include="ZipForRelease.ps1" />
   </ItemGroup>
   <ItemGroup>

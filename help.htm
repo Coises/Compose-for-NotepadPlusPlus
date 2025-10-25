@@ -201,7 +201,7 @@ window.addEventListener("load", doPageLoad);
 
 <h3>Menu items</h3>
 
-<p>There are four items on the <strong>Compose</strong> menu:</p>
+<p>There are five items on the <strong>Compose</strong> menu:</p>
 
 <ul>
 
@@ -214,6 +214,8 @@ window.addEventListener("load", doPageLoad);
 <p>You can choose almost any key on your keyboard as the compose key except the <span class=key>Shift</span>, <span class=key>Ctrl</span>, <span class=key>Alt</span>, <span class=key>Windows</span>, <span class=key>PrintScrn/SysReq</span> and <span class=key>Pause</span> keys, and you can use them alone or with any combination of <span class=key>Shift</span>, <span class=key>Ctrl</span> and <span class=key>Alt</span> modifiers. (You can’t use <span class=key>Backspace</span>, <span class=key>Enter</span> or the space bar alone, but you can use them with a combination of the <span class=key>Shift</span>, <span class=key>Ctrl</span> and/or <span class=key>Alt</span> keys.)</p>
 
 <li><strong>User definitions file...</strong> opens a dialog that lets you select a <a href="#userdef">user definitions file</a>. This file can add new compose sequence definitions and/or replace some of the default definitions, allowing you to customize <strong>Compose</strong> as you choose.
+
+<li><strong>New user definitions file</strong> opens a tab in Notepad++ with a model for a new user definitions file. 
 
 <li><strong>Help/About</strong> provides information about the version of <strong>Compose</strong> you are running, and allows you to view the change log, license and readme for the plugin or to open the help file for the version you are running.
 
@@ -451,9 +453,11 @@ window.addEventListener("load", doPageLoad);
 
 <section id=userdef><h2>User definitions</h2>
 
-<p>While it is possible to replace the built-in definitions file (<strong>compose-default.jsonc</strong> in the <strong>plugins\Compose</strong> folder where <strong>Notepad++</strong> is installed), doing that is not recommended, because the replacement file would be overwritten whenever <strong>Compose for Notepad++</strong> is updated. Instead, the menu option <strong>User definitions file...</strong> lets you designate a file that is merged with the default file to add your own explicit sequences.</p>
+<p>While it is possible to replace the built-in definitions file (<strong>compose-default.jsonc</strong> in the <strong>plugins\Compose</strong> folder where <strong>Notepad++</strong> is installed), doing that is not recommended, because the replacement file would be overwritten whenever <strong>Compose for Notepad++</strong> is updated. Instead, the menu option <strong>User definitions file...</strong> lets you select a file that is merged with the default file to add your own explicit sequences, and <strong>New user definitions file</strong> helps you create a new file.</p>
 
-<p>You can stop using a user definitions file by clicking <strong>None</strong> in that dialog. If you are editing your file, after saving it you can cause <strong>Compose for Notepad++</strong> to re-read the file and apply your changes by selecting <strong>User definitions file...</strong> and opening your file again.</p>
+<p>When you select <strong>New user definitions file</strong>, a new tab opens in Notepad++ containing some instructions and model content for a user definitions file. You don’t have to use this to create a user definitions file; it’s just there to get you started. You can save the file with any name, and in any place on your computer, that you choose; however, since <strong>Compose for Notepad++</strong> reads the designated user definitions file each time you launch <strong>Notepad++</strong>, you should save it where it won’t be disturbed. The preferred file extension to use is <code>.jsonc</code>. When you save the file, <strong>Compose</strong> will offer to set it as the user definitions file.</p>
+
+<p><strong>User definitions file...</strong> opens a file dialog that lets you select or edit a user definitions file you’ve already created. Use the <strong>Select</strong> button to load a file immediately; use <strong>Edit</strong> on the drop-down menu of the <strong>Select</strong> button to open a file for editing. When you save or close the file, <strong>Compose</strong> will offer to set it as the user definitions file. You can press the <strong>None</strong> button to stop using a user definitions file and revert to only the supplied sequence definitions.</p>
 
 <p>User definition files are <a href="https://jsonc.org/">JSONC</a> (JSON with comments) files. The file encoding must be UTF-8. When you choose a file in the <strong>User definitions file</strong> dialog, <strong>Compose for Notepad++</strong> will tell you if the file is not valid JSONC, but no facilities for diagnostic error reporting are implemented or planned.</p>
 

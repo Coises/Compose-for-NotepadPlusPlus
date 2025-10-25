@@ -30,6 +30,9 @@ inline struct CommonData {
     HHOOK hookCompose   = 0;       // Handle to the hook for processMessages, if successfully installed
     bool  bypassCompose = false;   // Set when Compose key dialog is open, so as not to trap existing compose key
 
+    UINT_PTR     pendingUserDefBuffer = 0;      // Notepad++ BufferID of a user definitions file being edited (0 if none pending)
+    bool         pendingQueryOnClose  = false;  // Set if we should ask whether to load pending user definitions file on close
+
     nlohmann::json rules;
 
     struct CombiningRule { char32_t one, two, up, down; };  // See ProcessCompose.cpp for explanation.
@@ -38,7 +41,7 @@ inline struct CommonData {
     // Data to be saved in the configuration file
 
     config<bool>         enabled                = { "ComposeEnabled"        , false    };
-    config<WPARAM>       composeKey             = { "ComposeKey"            , VK_INSERT};
+    config<WPARAM>       composeKey             = { "ComposeKey"            , VK_INSERT | (HOTKEYF_EXT << 8) };
     config<bool>         userDefinitionsEnabled = { "UserDefinitionsEnabled", false    };
     config<std::wstring> userDefinitionsFile    = { "UserDefinitionsFile"   , L""      };
 

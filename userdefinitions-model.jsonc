@@ -1,0 +1,28 @@
+// A user definitions file is a JSONC file containing pairs of keys and values
+// listing what you type after the Compose key and what Compose types in response.
+
+// Each pair except the last must be followed by a comma.
+
+// Two forward slashes begin a comment: Compose for Notepad++ ignores
+// the slashes and everything after them on the same line.
+
+// You can use the standard escapes \n (new line), \r (return), \t (tab),
+// \" (quote within a quoted string) and \\ (backslash within a quoted string).
+
+// You can also use Unicode escapes, \u followed by four hexadecimal digits,
+// for example: "\u20ac" for "€", the Euro sign. Escape sequences for characters
+// outside the basic multilingual plane (code points 0x10000 or greater)
+// can only be entered as a UTF-16 surrogate pair.
+
+// You should save this file with a .jsonc extension.
+// Compose for Notepad++ reads the file each time you launch Notepad++,
+// so be sure to save it in a place where it won't be disturbed.
+
+{
+"CC"   : "\u2102",   // double-struck capital C
+"rx"   : "℞",        // prescription symbol
+"elr"  : "\u2107",   // Euler constant
+"plnk" : "\u210E",   // Planck constant
+"wf"   : "1060 W Addison St\r\nChicago, IL 60613",
+"bdia" : "💎"
+}

@@ -163,6 +163,8 @@ public:
         return p;
     }
 
+    bool SetDefaultExtension(const std::wstring& extension) { return FalseOnFail(_dialog->SetDefaultExtension(extension.data())); }
+
     bool SetFileName(const std::wstring& name) {
         size_t split = name.rfind(L"\\");
         if (split == std::wstring::npos) return FalseOnFail(_dialog->SetFileName(name.data()));
@@ -222,14 +224,34 @@ public:
         return FalseOnFail(_customize->AddCheckButton(id, label.data(), checked));
     }
 
+    bool AddControlItem(DWORD controlId, DWORD itemId, const std::wstring& label) {
+        return FalseOnFail(_customize->AddControlItem(controlId, itemId, label.data()));
+    }
+
     bool AddPushButton(DWORD id, const std::wstring& label) {
         return FalseOnFail(_customize->AddPushButton(id, label.data()));
     }
 
+    bool AddText(DWORD id, const std::wstring& label) {
+        return FalseOnFail(_customize->AddText(id, label.data()));
+    }
+
+    bool EnableOpenDropDown(DWORD id) {
+        return FalseOnFail(_customize->EnableOpenDropDown(id));
+    }
+
     bool GetCheckButtonState(DWORD id) {
         BOOL checked;
-        _customize->GetCheckButtonState(id, &checked);
-        return checked;
+        return FalseOnFail(_customize->GetCheckButtonState(id, &checked)) ? checked : false;
+    }
+
+    DWORD GetSelectedControlItem(DWORD id) {
+        DWORD result;
+        return FalseOnFail(_customize->GetSelectedControlItem(id, &result)) ? result : 0;
+    }
+
+    bool MakeProminent(DWORD id) {
+        return FalseOnFail(_customize->MakeProminent(id));
     }
 
     bool SetCheckButtonState(DWORD id, bool checked) {

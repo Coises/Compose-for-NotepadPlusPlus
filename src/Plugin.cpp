@@ -31,10 +31,17 @@ bool loadSequenceDefinitions();  // defined in LoadSequenceDefinitions.cpp
 
 // Routines that process menu commands
 
-void toggleEnabled();              // defined in ProcessCommands.cpp
-void selectUserDefinitionsFile();  // defined in ProcessCommands.cpp
-void showComposeKeyDialog();       // defined in ComposeKeyDialog.cpp
-void showAboutDialog();            // defined in About.cpp
+void toggleEnabled();               // defined in ProcessCommands.cpp
+void showComposeKeyDialog();        // defined in ComposeKeyDialog.cpp
+void selectUserDefinitionsFile();   // defined in ProcessCommands.cpp
+void newUserDefinitionsFile();      // defined in ProcessCommands.cpp
+void showAboutDialog();             // defined in About.cpp
+
+// Routines that process Notepad++ notifications
+
+void fileBeforeClose(const NMHDR*);
+void fileClosed(const NMHDR*);
+void fileSaved(const NMHDR*);
 
 
 // Name and define any shortcut keys to be assigned as menu item defaults: Ctrl, Alt, Shift and the virtual key code
@@ -56,11 +63,12 @@ void showAboutDialog();            // defined in About.cpp
 // to get the menu item identifier assigned by Notepad++.
 
 FuncItem menuDefinition[] = {
-    { L"Enabled"                 , []() {plugin.cmd(toggleEnabled            );}, 0, false, 0},
-    { L"Compose key..."          , []() {plugin.cmd(showComposeKeyDialog     );}, 0, false, 0},
-    { L"---"                     , 0                                            , 0, false, 0},
-    { L"User definitions file...", []() {plugin.cmd(selectUserDefinitionsFile);}, 0, false, 0},
-    { L"Help/About..."           , []() {plugin.cmd(showAboutDialog          );}, 0, false, 0}
+    { L"Enabled"                  , []() {plugin.cmd(toggleEnabled            );}, 0, false, 0},
+    { L"Compose key..."           , []() {plugin.cmd(showComposeKeyDialog     );}, 0, false, 0},
+    { L"---"                      , 0                                            , 0, false, 0},
+    { L"User definitions file..." , []() {plugin.cmd(selectUserDefinitionsFile);}, 0, false, 0},
+    { L"New user definitions file", []() {plugin.cmd(newUserDefinitionsFile);   }, 0, false, 0},
+    { L"Help/About..."            , []() {plugin.cmd(showAboutDialog          );}, 0, false, 0}
 };
 
 int menuItem_ToggleEnabled = 0;
@@ -101,6 +109,18 @@ extern "C" __declspec(dllexport) void beNotified(SCNotification *np) {
 
         case NPPN_CANCELSHUTDOWN:
             plugin.startupOrShutdown = false;
+            break;
+
+        case NPPN_FILEBEFORECLOSE:
+            fileBeforeClose(nmhdr);
+            break;
+
+        case NPPN_FILECLOSED:
+            fileClosed(nmhdr);
+            break;
+
+        case NPPN_FILESAVED:
+            fileSaved(nmhdr);
             break;
 
         case NPPN_READY:
