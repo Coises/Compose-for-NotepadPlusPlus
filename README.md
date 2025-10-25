@@ -32,7 +32,7 @@ A [long list of pre-defined sequences](https://coises.github.io/Compose-for-Note
 
 The pre-defined sequences include all the HTML named character entities; for example, you can type *Compose* `&copy;` to type the copyright symbol. You can also enter *Compose* `&#...;` and *Compose* `&#x....;` sequences, or just type the Compose key, the hexadecimal value of a Unicode code point, and the Enter key. (If the hexadecimal value begins with two letters, type a zero first to be sure you don’t trigger a different, pre-defined sequence.)
 
-Around thirty combining marks (accents) are defined. You can enter sequences using multiple marks, such as `[ComposeKey].-a` to type `ǡ` (lower case `a` with a dot above and a macron). **Compose for Notepad++** will insert a pre-composed Unicode character when one exists; otherwise it will insert the appropriate combining characters.
+Around thirty combining marks (accents) are defined. You can enter sequences using multiple marks, such as *Compose* `.-a` to type `ǡ` (lower case `a` with a dot above and a macron). **Compose for Notepad++** will insert a pre-composed Unicode character when one exists; otherwise it will insert the appropriate combining characters.
 
 A detailed [help file](https://coises.github.io/Compose-for-NotepadPlusPlus/help.htm) is available.
 
